@@ -1,11 +1,16 @@
+import { Component } from "react";
+import BuscaLivros from "./components/BuscaLivros";
 
 
-function App() {
-  return (
+class App extends Component {
+  render(){
+ return (
     <div >
-      <h1>Hello World!!!!</h1>
+      <BuscaLivros />
     </div>
   );
+  }
+ 
 }
 
 export default App;
