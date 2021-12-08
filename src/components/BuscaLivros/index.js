@@ -6,6 +6,8 @@ import api from "../../service/api";
 
 
 export default function BuscaLivros() {
+
+    const [input, setInput] = useState('');
     const [livros, setLivros] =useState([]);
 
     useEffect(()=>{
@@ -15,14 +17,16 @@ export default function BuscaLivros() {
         console.log(livros)
        // eslint-disable-next-line
     },[]);
-  
+console.log(input)
+   
     return (
         <div className="container">
             <h1>Busca Livros</h1>
-            <input type="text" /><span><MdSearch fontSize="30px" /></span>
+            <input type="text" value={input} onInput={e => setInput(e.target.value)} /><span className="lupa-span"><MdSearch fontSize="30px" /></span>
+            
            
-               {livros?.map((livro)=>(
-                   <div className="container-books">
+               {livros?.map((livro,index)=>(
+                   <div key={index} className="container-books">
 
                    <span className="p-span-autor"><BiUser fontSize="20px" /></span>  <p> {livro.author}</p>
                    <span className="p-span"><BiBook fontSize="20px" /></span> <p> {livro.story_title}</p>

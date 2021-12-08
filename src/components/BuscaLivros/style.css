@@ -37,6 +37,11 @@ span{
     width: 40px;
     height: 32px;
 }
+.lupa-span:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 255, 0.459);
+    transition: all 0.50s;
+}
 p{
    
     padding:5px;
