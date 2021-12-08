@@ -1,35 +1,39 @@
-import { Component } from "react";
+import {  useEffect, useState } from "react";
 import { MdSearch } from "react-icons/md";
 import { BiBook, BiWorld, BiUser } from "react-icons/bi";
 import './style.css';
+import api from "../../service/api";
 
 
-class BuscaLivros extends Component{
+export default function BuscaLivros() {
+    const [livros, setLivros] =useState([]);
 
-    constructor(props){
-        super(props);
-             this.state ={
+    useEffect(()=>{
+        api.get( " https://hn.algolia.com/api/v1/search?query=").then(({data})=>{
+            setLivros(data.hits);
+        })
+        console.log(livros)
+       // eslint-disable-next-line
+    },[]);
+  
+    return (
+        <div className="container">
+            <h1>Busca Livros</h1>
+            <input type="text" /><span><MdSearch fontSize="30px" /></span>
+           
+               {livros?.map((livro)=>(
+                   <div className="container-books">
 
-             };       
-               
-    }
-
-   
-
-    render(){
-        return(
-            <div className="container">
-                <h1>Busca Livros</h1>
-                <input type="text" /><span><MdSearch fontSize="30px"/></span>
-                <div className="container-books">
-                   <span className="p-span-autor"><BiUser fontSize="20px"/></span>  <p>autor</p>
-                   <span className="p-span"><BiBook fontSize="20px"/></span> <p> titulo</p>
-                   <span className="p-span"><BiWorld fontSize="20px"/></span>  <p>url</p>
-                </div>
+                   <span className="p-span-autor"><BiUser fontSize="20px" /></span>  <p> {livro.author}</p>
+                   <span className="p-span"><BiBook fontSize="20px" /></span> <p> {livro.story_title}</p>
+                   <span className="p-span"><BiWorld fontSize="20px" /></span>  <p>{livro.story_url}</p>
+                      
+                   </div>
+                ))}
 
             </div>
-        );
-    }
+ 
+    );
+
 }
 
-export default BuscaLivros;
