@@ -1,0 +1,17 @@
+*{
+    margin:0%;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #AB6000;
+    border: none;
+    width: 100%;
+    height: 70px;
+    z-index: 10;
+}
+header h1{
+    padding: 10px 40px;
+    color: #2AAFF7;
+}
