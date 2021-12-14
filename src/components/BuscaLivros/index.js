@@ -34,7 +34,7 @@ export default function BuscaLivros() {
     return (
         <div className="container">
             <h1>Busca Livros</h1>
-            <input type="text" value={busca} onChange={(ev)=>setBusca(ev.target.value)} /><span onClick={pegaLivroSearch}><MdSearch fontSize="30px" /></span>
+            <input type="text" value={busca} onChange={(ev)=>setBusca(ev.target.value)} /><span onClick={pegaLivroSearch}><MdSearch id="lupa" fontSize="30px" /></span>
            
                {livros?.map((livro)=>(
                    <div key={livro.parent_id} className="container-books">
